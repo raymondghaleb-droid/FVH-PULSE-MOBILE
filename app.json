@@ -7,7 +7,8 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.foodventureshospitality.fvhpulse"
     },
     "android": {
       "adaptiveIcon": {
@@ -19,6 +20,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "033ef274-d3b4-4c34-be60-2b78c24ff597"
+      }
     }
   }
 }
