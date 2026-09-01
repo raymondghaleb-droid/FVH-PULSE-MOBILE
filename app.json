@@ -11,7 +11,7 @@
       "bundleIdentifier": "com.foodventureshospitality.fvhpulse"
     },
     "android": {
-      "package": "com.foodventureshospitality.fvhpulse"
+"package": "com.foodventureshospitality.fvhpulse",
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/android-icon-foreground.png",
