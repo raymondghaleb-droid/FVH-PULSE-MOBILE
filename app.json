@@ -9,7 +9,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.foodventureshospitality.fvhpulse",
-"buildNumber": "2",
+      "buildNumber": "2",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
       }
@@ -29,6 +29,12 @@
       "eas": {
         "projectId": "033ef274-d3b4-4c34-be60-2b78c24ff597"
       }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/033ef274-d3b4-4c34-be60-2b78c24ff597"
     }
   }
 }

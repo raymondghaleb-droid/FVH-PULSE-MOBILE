@@ -215,63 +215,80 @@ export default function App() {
     );
   }
 
-  if (!user) {
-    return (
-      <SafeAreaView style={styles.container}>
-        <StatusBar barStyle="light-content" />
+if (!user) {
+  return (
+    <SafeAreaView style={styles.container}>
+      <StatusBar barStyle="light-content" />
 
+      <ScrollView
+        contentContainerStyle={styles.loginScroll}
+        keyboardShouldPersistTaps="handled"
+      >
         <View style={styles.loginContent}>
-          <View style={styles.logo}>
-            <Text style={styles.logoText}>FVH</Text>
+          <View style={styles.brandBlock}>
+            <View style={styles.logo}>
+              <Text style={styles.logoText}>FVH</Text>
+            </View>
+
+            <Text style={styles.title}>FVH PULSE</Text>
+            <Text style={styles.tagline}>
+              Hospitality Operations. Connected.
+            </Text>
           </View>
 
-          <Text style={styles.title}>FVH PULSE</Text>
-          <Text style={styles.tagline}>Hospitality. Connected.</Text>
-
           <View style={styles.loginCard}>
-            <Text style={styles.welcome}>Welcome Back</Text>
-
-            <Text style={styles.description}>
-              Sign in to access your operations.
+            <Text style={styles.loginHeading}>Welcome back</Text>
+            <Text style={styles.loginSubheading}>
+              Sign in to access your operation.
             </Text>
 
-            <Text style={styles.label}>Email</Text>
-
+            <Text style={styles.fieldLabel}>EMAIL</Text>
             <TextInput
               style={styles.input}
               placeholder="name@company.com"
-              placeholderTextColor="#7D8794"
+              placeholderTextColor={MUTED}
               value={email}
               onChangeText={setEmail}
-              keyboardType="email-address"
               autoCapitalize="none"
               autoCorrect={false}
+              keyboardType="email-address"
+              textContentType="emailAddress"
+              editable={!loading}
             />
 
-            <Text style={styles.label}>Password</Text>
-
+            <Text style={styles.fieldLabel}>PASSWORD</Text>
             <TextInput
               style={styles.input}
               placeholder="Enter your password"
-              placeholderTextColor="#7D8794"
+              placeholderTextColor={MUTED}
               value={password}
               onChangeText={setPassword}
               secureTextEntry
+              textContentType="password"
+              editable={!loading}
+              onSubmitEditing={handleSignIn}
             />
 
             <TouchableOpacity
-              style={styles.signInButton}
+              style={[
+                styles.signInButton,
+                loading && styles.signInButtonDisabled,
+              ]}
               onPress={handleSignIn}
               disabled={loading}
+              activeOpacity={0.85}
             >
-              <Text style={styles.signInButtonText}>
-                {loading ? 'SIGNING IN...' : 'SIGN IN'}
-              </Text>
+              {loading ? (
+                <ActivityIndicator color={BG} />
+              ) : (
+                <Text style={styles.signInButtonText}>SIGN IN</Text>
+              )}
             </TouchableOpacity>
 
             <TouchableOpacity
               onPress={handleForgotPassword}
-              disabled={resettingPassword}
+              disabled={resettingPassword || loading}
+              style={styles.forgotButton}
             >
               <Text style={styles.forgot}>
                 {resettingPassword
@@ -281,13 +298,19 @@ export default function App() {
             </TouchableOpacity>
           </View>
 
-          <Text style={styles.footer}>
-            Powered by Food Ventures Hospitality
-          </Text>
+          <View style={styles.loginFooterBlock}>
+            <Text style={styles.footer}>
+              Powered by Food Ventures Hospitality
+            </Text>
+            <Text style={styles.secureText}>
+              Secure operational access
+            </Text>
+          </View>
         </View>
-      </SafeAreaView>
-    );
-  }
+      </ScrollView>
+    </SafeAreaView>
+  );
+}
 
   const userRole = profile?.role || 'user';
 
