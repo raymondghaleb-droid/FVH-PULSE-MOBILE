@@ -510,19 +510,58 @@ if (!user) {
     </ScrollView>
   );
 
+const TasksScreen = () => (
+  <ScrollView contentContainerStyle={styles.moreContent}>
+    <Text style={styles.placeholderBrand}>FVH PULSE</Text>
+    <Text style={styles.placeholderTitle}>Tasks</Text>
+    <Text style={styles.placeholderSubtitle}>
+      Your priorities, assignments and follow-ups.
+    </Text>
+
+    <View style={styles.placeholderCard}>
+      <Text style={styles.placeholderCardText}>
+        Task management is ready for the next development step.
+      </Text>
+    </View>
+
+    <TouchableOpacity
+      style={styles.moreButton}
+      onPress={() =>
+        Alert.alert(
+          'New Task',
+          'Task creation will be connected to Supabase next.'
+        )
+      }
+    >
+      <Text style={styles.moreButtonText}>+ Create New Task</Text>
+      <Text style={styles.arrow}>›</Text>
+    </TouchableOpacity>
+
+    <TouchableOpacity style={styles.moreButton}>
+      <Text style={styles.moreButtonText}>Open Tasks</Text>
+      <Text style={styles.arrow}>›</Text>
+    </TouchableOpacity>
+
+    <TouchableOpacity style={styles.moreButton}>
+      <Text style={styles.moreButtonText}>Critical Tasks</Text>
+      <Text style={styles.arrow}>›</Text>
+    </TouchableOpacity>
+
+    <TouchableOpacity style={styles.moreButton}>
+      <Text style={styles.moreButtonText}>Completed Tasks</Text>
+      <Text style={styles.arrow}>›</Text>
+    </TouchableOpacity>
+  </ScrollView>
+);
+
   const renderScreen = () => {
     if (activeTab === 'home') {
       return <HomeScreen />;
     }
 
-    if (activeTab === 'tasks') {
-      return (
-        <PlaceholderScreen
-          title="Tasks"
-          subtitle="Your priorities, assignments and follow-ups."
-        />
-      );
-    }
+if (activeTab === 'tasks') {
+  return <TasksScreen />;
+}
 
     if (activeTab === 'audits') {
       return (
