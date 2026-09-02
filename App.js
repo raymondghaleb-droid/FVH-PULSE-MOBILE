@@ -560,7 +560,45 @@ const TasksScreen = () => (
     }
 
 if (activeTab === 'tasks') {
-  return <TasksScreen />;
+  return (
+    <ScrollView contentContainerStyle={styles.moreContent}>
+      <Text style={styles.placeholderBrand}>FVH PULSE</Text>
+      <Text style={styles.placeholderTitle}>Tasks</Text>
+
+      <Text style={styles.placeholderSubtitle}>
+        Your priorities, assignments and follow-ups.
+      </Text>
+
+      <TouchableOpacity
+        style={[styles.moreButton, { backgroundColor: GOLD }]}
+        onPress={() =>
+          Alert.alert(
+            'New Task',
+            'Task creation will be connected to Supabase next.'
+          )
+        }
+      >
+        <Text style={[styles.moreButtonText, { color: BG }]}>
+          + CREATE NEW TASK
+        </Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.moreButton}>
+        <Text style={styles.moreButtonText}>Open Tasks</Text>
+        <Text style={styles.arrow}>›</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.moreButton}>
+        <Text style={styles.moreButtonText}>Critical Tasks</Text>
+        <Text style={styles.arrow}>›</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.moreButton}>
+        <Text style={styles.moreButtonText}>Completed Tasks</Text>
+        <Text style={styles.arrow}>›</Text>
+      </TouchableOpacity>
+    </ScrollView>
+  );
 }
 
     if (activeTab === 'audits') {
