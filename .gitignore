@@ -39,3 +39,12 @@ yarn-error.*
 # generated native folders
 /ios
 /android
+# Apple / EAS credentials
+credentials.json
+*.p12
+*.p8
+*.key
+*.cer
+*.csr
+*.pem
+*.mobileprovision
