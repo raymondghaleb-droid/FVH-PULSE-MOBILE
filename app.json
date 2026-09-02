@@ -8,7 +8,11 @@
     "userInterfaceStyle": "light",
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.foodventureshospitality.fvhpulse"
+      "bundleIdentifier": "com.foodventureshospitality.fvhpulse",
+"buildNumber": "2",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "package": "com.foodventureshospitality.fvhpulse",
