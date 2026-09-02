@@ -317,13 +317,27 @@ export default function App() {
       </View>
 
       <View style={styles.welcomeBlock}>
-        <Text style={styles.greeting}>Welcome,</Text>
-        <Text style={styles.personName}>{displayName}</Text>
+  <Text style={styles.greeting}>Good evening,</Text>
 
-        <View style={styles.roleBadge}>
-          <Text style={styles.roleText}>{prettyRole}</Text>
-        </View>
-      </View>
+  <Text style={styles.personName}>{displayName}</Text>
+
+  <Text style={styles.executiveSubtitle}>
+    Your business at a glance
+  </Text>
+
+  <View style={styles.contextRow}>
+    <View style={styles.locationBadge}>
+      <Text style={styles.locationLabel}>CURRENT VIEW</Text>
+      <Text style={styles.locationName}>
+        All Operations
+      </Text>
+    </View>
+
+    <View style={styles.roleBadge}>
+      <Text style={styles.roleText}>{prettyRole}</Text>
+    </View>
+  </View>
+</View>
 
       {userRole === 'super_admin' && (
         <TouchableOpacity
@@ -342,44 +356,81 @@ export default function App() {
             </Text>
           </View>
 
-          <Text style={styles.commandArrow}>â€º</Text>
+          <Text style={styles.commandArrow}>›</Text>
         </TouchableOpacity>
       )}
 
-      <Text style={styles.sectionTitle}>Operations Overview</Text>
+<Text style={styles.sectionTitle}>Business Health</Text>
 
-      <View style={styles.statsRow}>
-        <TouchableOpacity
-          style={styles.statCard}
-          onPress={() => setActiveTab('tasks')}
-        >
-          <Text style={styles.statNumber}>{stats.tasks}</Text>
-          <Text style={styles.statLabel}>Open Tasks</Text>
-        </TouchableOpacity>
+<View style={styles.pulseHeroCard}>
+  <View>
+    <Text style={styles.pulseEyebrow}>PULSE SCORE</Text>
+    <Text style={styles.pulseScore}>86</Text>
+    <Text style={styles.pulseStatus}>HEALTHY · ATTENTION REQUIRED</Text>
+  </View>
 
-        <TouchableOpacity
-          style={styles.statCard}
-          onPress={() => setActiveTab('audits')}
-        >
-          <Text style={styles.statNumber}>{stats.audits}</Text>
-          <Text style={styles.statLabel}>Audits</Text>
-        </TouchableOpacity>
-      </View>
+  <View style={styles.pulseTrendBox}>
+    <Text style={styles.pulseTrendValue}>+3</Text>
+    <Text style={styles.pulseTrendLabel}>vs last week</Text>
+  </View>
+</View>
 
-      <View style={styles.statsRow}>
-        <TouchableOpacity
-          style={styles.statCard}
-          onPress={() => setActiveTab('checklists')}
-        >
-          <Text style={styles.statNumber}>{stats.checklists}</Text>
-          <Text style={styles.statLabel}>Checklists</Text>
-        </TouchableOpacity>
+<View style={styles.statsRow}>
+  <TouchableOpacity
+    style={styles.statCard}
+    onPress={() => setActiveTab('tasks')}
+  >
+    <Text style={styles.statNumber}>{stats.tasks}</Text>
+    <Text style={styles.statLabel}>Open Tasks</Text>
+  </TouchableOpacity>
 
-        <View style={[styles.statCard, styles.criticalCard]}>
-          <Text style={styles.criticalNumber}>{stats.critical}</Text>
-          <Text style={styles.statLabel}>Critical</Text>
-        </View>
-      </View>
+  <TouchableOpacity
+    style={styles.statCard}
+    onPress={() => setActiveTab('audits')}
+  >
+    <Text style={styles.statNumber}>{stats.audits}</Text>
+    <Text style={styles.statLabel}>Audits</Text>
+  </TouchableOpacity>
+</View>
+
+<View style={styles.statsRow}>
+  <TouchableOpacity
+    style={styles.statCard}
+    onPress={() => setActiveTab('checklists')}
+  >
+    <Text style={styles.statNumber}>{stats.checklists}</Text>
+    <Text style={styles.statLabel}>Checklists</Text>
+  </TouchableOpacity>
+
+  <View style={[styles.statCard, styles.criticalCard]}>
+    <Text style={styles.criticalNumber}>{stats.critical}</Text>
+    <Text style={styles.statLabel}>Critical</Text>
+  </View>
+</View>
+
+<Text style={styles.sectionTitle}>Needs Your Attention</Text>
+
+<View style={styles.attentionCard}>
+  <View style={styles.attentionDotCritical} />
+  <View style={styles.attentionTextWrap}>
+    <Text style={styles.attentionTitle}>Critical operational issues</Text>
+    <Text style={styles.attentionSubtitle}>
+      {stats.critical > 0
+        ? `${stats.critical} critical item${stats.critical === 1 ? '' : 's'} require attention`
+        : 'No critical issues reported'}
+    </Text>
+  </View>
+</View>
+
+<View style={styles.attentionCard}>
+  <View style={styles.attentionDotWarning} />
+  <View style={styles.attentionTextWrap}>
+    <Text style={styles.attentionTitle}>Open operational actions</Text>
+    <Text style={styles.attentionSubtitle}>
+      {stats.tasks} open task{stats.tasks === 1 ? '' : 's'} awaiting completion
+    </Text>
+  </View>
+</View>
 
       <Text style={styles.sectionTitle}>Quick Access</Text>
 
@@ -393,7 +444,7 @@ export default function App() {
             Priorities and assignments
           </Text>
         </View>
-        <Text style={styles.arrow}>â€º</Text>
+        <Text style={styles.arrow}>›</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
@@ -406,7 +457,7 @@ export default function App() {
             Standards, quality and compliance
           </Text>
         </View>
-        <Text style={styles.arrow}>â€º</Text>
+        <Text style={styles.arrow}>›</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
@@ -419,7 +470,7 @@ export default function App() {
             Daily operational routines
           </Text>
         </View>
-        <Text style={styles.arrow}>â€º</Text>
+        <Text style={styles.arrow}>›</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
@@ -432,7 +483,7 @@ export default function App() {
             Standards and procedures
           </Text>
         </View>
-        <Text style={styles.arrow}>â€º</Text>
+        <Text style={styles.arrow}>›</Text>
       </TouchableOpacity>
     </ScrollView>
   );
@@ -460,22 +511,22 @@ export default function App() {
 
       <TouchableOpacity style={styles.moreButton}>
         <Text style={styles.moreButtonText}>SOP Library</Text>
-        <Text style={styles.arrow}>â€º</Text>
+        <Text style={styles.arrow}>›</Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.moreButton}>
         <Text style={styles.moreButtonText}>Messages</Text>
-        <Text style={styles.arrow}>â€º</Text>
+        <Text style={styles.arrow}>›</Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.moreButton}>
         <Text style={styles.moreButtonText}>Profile</Text>
-        <Text style={styles.arrow}>â€º</Text>
+        <Text style={styles.arrow}>›</Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.moreButton}>
         <Text style={styles.moreButtonText}>Report a Problem</Text>
-        <Text style={styles.arrow}>â€º</Text>
+        <Text style={styles.arrow}>›</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
@@ -663,32 +714,74 @@ const styles = StyleSheet.create({
 
   greeting: {
     color: MUTED,
-    fontSize: 16,
+    fontSize: 15,
+    fontWeight: '500',
+    letterSpacing: 0.2,
   },
-
+  
   personName: {
     color: WHITE,
-    fontSize: 30,
+    fontSize: 32,
     fontWeight: '800',
+    marginTop: 2,
+    letterSpacing: -0.5,
+  },
+  
+  executiveSubtitle: {
+    color: MUTED,
+    fontSize: 14,
+    lineHeight: 20,
+    marginTop: 7,
+  },
+  
+  contextRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginTop: 18,
+    gap: 10,
+  },
+  
+  locationBadge: {
+    flex: 1,
+    backgroundColor: CARD,
+    borderWidth: 1,
+    borderColor: BORDER,
+    borderRadius: 14,
+    paddingHorizontal: 14,
+    paddingVertical: 10,
+  },
+  
+  locationLabel: {
+    color: MUTED,
+    fontSize: 9,
+    fontWeight: '700',
+    letterSpacing: 1.1,
+  },
+  
+  locationName: {
+    color: WHITE,
+    fontSize: 13,
+    fontWeight: '700',
     marginTop: 3,
   },
-
+  
   roleBadge: {
-    alignSelf: 'flex-start',
-    backgroundColor: '#172536',
-    borderRadius: 20,
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    marginTop: 12,
+    alignSelf: 'center',
+    backgroundColor: CARD_2,
+    borderWidth: 1,
+    borderColor: GOLD,
+    borderRadius: 14,
+    paddingHorizontal: 13,
+    paddingVertical: 11,
   },
-
+  
   roleText: {
     color: GOLD,
-    fontSize: 11,
+    fontSize: 10,
     fontWeight: '800',
-    letterSpacing: 0.5,
+    letterSpacing: 0.6,
   },
-
   commandCenter: {
     backgroundColor: GOLD,
     borderRadius: 22,
@@ -1023,4 +1116,107 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 28,
   },
+
+  pulseHeroCard: {
+    backgroundColor: CARD,
+    borderRadius: 22,
+    borderWidth: 1,
+    borderColor: BORDER,
+    padding: 22,
+    marginBottom: 16,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  
+  pulseEyebrow: {
+    color: GOLD,
+    fontSize: 11,
+    fontWeight: '700',
+    letterSpacing: 1.8,
+    marginBottom: 6,
+  },
+  
+  pulseScore: {
+    color: WHITE,
+    fontSize: 54,
+    fontWeight: '800',
+    lineHeight: 60,
+  },
+  
+  pulseStatus: {
+    color: MUTED,
+    fontSize: 12,
+    fontWeight: '600',
+    marginTop: 4,
+    letterSpacing: 0.4,
+  },
+  
+  pulseTrendBox: {
+    minWidth: 88,
+    paddingVertical: 12,
+    paddingHorizontal: 14,
+    borderRadius: 16,
+    backgroundColor: CARD_2,
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: BORDER,
+  },
+  
+  pulseTrendValue: {
+    color: '#5FD38D',
+    fontSize: 22,
+    fontWeight: '800',
+  },
+  
+  pulseTrendLabel: {
+    color: MUTED,
+    fontSize: 10,
+    marginTop: 3,
+  },
+  
+  attentionCard: {
+    backgroundColor: CARD,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: BORDER,
+    padding: 16,
+    marginBottom: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  
+  attentionDotCritical: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    backgroundColor: '#F05A67',
+    marginRight: 12,
+  },
+  
+  attentionDotWarning: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    backgroundColor: '#E6B85C',
+    marginRight: 12,
+  },
+  
+  attentionTextWrap: {
+    flex: 1,
+  },
+  
+  attentionTitle: {
+    color: WHITE,
+    fontSize: 15,
+    fontWeight: '700',
+  },
+  
+  attentionSubtitle: {
+    color: MUTED,
+    fontSize: 12,
+    marginTop: 4,
+    lineHeight: 17,
+  },
+
 });
