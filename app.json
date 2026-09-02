@@ -1,8 +1,9 @@
 {
   "expo": {
-    "name": "FVH-PULSE-MOBILE",
+    "name": "FVH Pulse",
     "slug": "FVH-PULSE-MOBILE",
-    "version": "1.0.0",
+    "version": "1.0.1",
+    "scheme": "fvh-pulse",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -16,6 +17,7 @@
     },
     "android": {
       "package": "com.foodventureshospitality.fvhpulse",
+      "versionCode": 2,
       "adaptiveIcon": {
         "backgroundColor": "#000000",
         "foregroundImage": "./assets/android-icon-foreground.png",
